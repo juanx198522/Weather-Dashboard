@@ -16,57 +16,116 @@
         <h1>Weather Dashboard</h1>
     </header>
 
-    <div id="container">
-        <div id="search">
-
-            <h2>Search for a City:</h2>
-            <input id="cityInput" placeholder="San Diego" type="text" class="form-control" aria-label="Default"
-                aria-describedby="inputGroup-sizing-default" />
-            <button id="fetch-button" class="btn btn-primary">Search</button>
-
-            <div id="search-history">
-
+    <div class="container">
+        <div class="row">
+            <!-- Search on the left side -->
+            <div class="col-md-3">
+                <div id="search">
+                    <h2>Search for a City:</h2>
+                    <input id="cityInput" placeholder="San Diego" type="text" class="form-control" aria-label="Default"
+                        aria-describedby="inputGroup-sizing-default" />
+                    <button id="fetch-button" class="btn btn-primary">Search</button>
+                    <div id="search-history"></div>
+                </div>
             </div>
-        </div>
-        <div id="results">
-            <div id="current-weather">
-                <h2 id="city-name"></h2>
-                <p id="temp-actual"></p>
-                <p id="wind-actual"></p>
-                <p id="humidity-actual"></p>
-            </div>
-            <div id="future-weather">
-                <!-- <div class = "icons">
-                    <p class="weather" id="day1"></p>
-                    <div class="image"><img src="dots.png" class="imgClass" id="img1"></div>
-                    <p class="minValues" id="day1Min">Loading...</p>
-                    <p class="maxValues" id="day1Max">Loading...</p>
-                </div>
-                <div class = "icons">
-                    <p class="weather" id="day2"></p>
-                    <div class="image"><img src="dots.png" class="imgClass" id="img2"></div>
-                    <p class="minValues" id="day2Min">Loading...</p>
-                    <p class="maxValues" id="day2Max">Loading...</p>
-                </div>
-                <div class = "icons">
-                    <p class="weather" id="day3"></p>
-                    <div class="image"><img src="dots.png" class="imgClass" id="img3"></div>
-                    <p class="minValues" id="day3Min">Loading...</p>
-                    <p class="maxValues" id="day3Max">Loading...</p>
-                </div>
-                <div class = "icons">
-                    <p class="weather" id="day4"></p>
-                    <div class="image"><img src="dots.png" class="imgClass" id="img4"></div>
-                    <p class="minValues" id="day4Min">Loading...</p>
-                    <p class="maxValues" id="day4Max">Loading...</p>
-                </div>
-                <div class = "icons">
-                    <p class="weather" id="day5"></p>
-                    <div class="image"><img src="dots.png" class="imgClass" id="img5"></div>
-                    <p class="minValues" id="day5Min">Loading...</p>
-                    <p class="maxValues" id="day5Max">Loading...</p>
-                </div> -->
 
+            <!-- Current Weather and Future Weather on the right side -->
+            <div class="col-md-9">
+                <div id="current-weather" class="card">
+                    <h2 id="city-name"></h2>
+                    <p id="temp-actual"></p>
+                    <p id="wind-actual"></p>
+                    <p id="humidity-actual"></p>
+                </div>
+                <div id="future-weather">
+                    <!-- Future Weather Forecast -->
+                    <section class="row">
+                        <!-- Day: One -->
+                        <article class="col">
+                            <figure class="card">
+                                <h2 class="card-header">1 Day Forecast</h2>
+                                <div class="card-body">
+                                    <p id="cityday1">Day One</p>
+                                    <p id="cityname">City Name</p>
+                                    <a href="https://openweathermap.org/img/wn/10d@2x.png" target=""><img
+                                            id="weather-icon1" src="https://openweathermap.org/img/wn/10d@2x.png"
+                                            alt="One Day away weather forecast, displayed for the searched city which includes: City, Date, Weather Icon, Temperature, Humidity, and Wind."></a>
+                                    <p id="temp1">Temperature: XX°C</p>
+                                    <p id="humid1">Humidity: XX%</p>
+                                    <p id="wind1">Wind: XX mph</p>
+                                </div>
+                            </figure>
+                        </article>
+
+                        <!-- Day: Two -->
+                        <article class="col">
+                            <figure class="card">
+                                <h2 class="card-header">2 Day Forecast</h2>
+                                <div class="card-body">
+                                    <p id="cityday2">Day Two</p>
+                                    <p id="cityname">City Name</p>
+                                    <a href="https://openweathermap.org/img/wn/10d@2x.png" target=""><img
+                                            id="weather-icon2" src="https://openweathermap.org/img/wn/10d@2x.png"
+                                            alt="Two Day's away weather forecast, displayed for the searched city which includes: City, Date, Weather Icon, Temperature, Humidity, and Wind."></a>
+                                    <p id="temp2">Temperature: XX°C</p>
+                                    <p id="humid2">Humidity: XX%</p>
+                                    <p id="wind2">Wind: XX mph</p>
+                                </div>
+                            </figure>
+                        </article>
+
+                        <!-- Day: Three -->
+                        <article class="col">
+                            <figure class="card">
+                                <h2 class="card-header">3 Day Forecast</h2>
+                                <div class="card-body">
+                                    <p id="cityday3">Day Three</p>
+                                    <p id="cityname">City Name</p>
+                                    <a href="https://openweathermap.org/img/wn/10d@2x.png" target=""><img
+                                            id="weather-icon3" src="https://openweathermap.org/img/wn/10d@2x.png"
+                                            alt="Three Day's away weather forecast, displayed for the searched city which includes: City, Date, Weather Icon, Temperature, Humidity, and Wind."></a>
+                                    <p id="temp3">Temperature: XX°C</p>
+                                    <p id="humid3">Humidity: XX%</p>
+                                    <p id="wind3">Wind: XX mph</p>
+                                </div>
+                            </figure>
+                        </article>
+
+                        <!-- Day: Four -->
+                        <article class="col">
+                            <figure class="card">
+                                <h2 class="card-header">4 Day Forecast</h2>
+                                <div class="card-body">
+                                    <p id="cityday4">Day Four</p>
+                                    <p id="cityname">City Name</p>
+                                    <a href="https://openweathermap.org/img/wn/10d@2x.png" target=""><img
+                                            id="weather-icon4" src="https://openweathermap.org/img/wn/10d@2x.png"
+                                            alt="Four Day's away weather forecast, displayed for the searched city which includes: City, Date, Weather Icon, Temperature, Humidity, and Wind."></a>
+                                    <p id="temp4">Temperature: XX°C</p>
+                                    <p id="humid4">Humidity: XX%</p>
+                                    <p id="wind4">Wind: XX mph</p>
+                                </div>
+                            </figure>
+                        </article>
+
+                        <!-- Day: Five -->
+                        <article class="col">
+                            <figure class="card">
+                                <h2 class="card-header">5 Day Forecast</h2>
+                                <div class="card-body">
+                                    <p id="cityday5">Day Five</p>
+                                    <p id="cityname">City Name</p>
+                                    <a href="https://openweathermap.org/img/wn/10d@2x.png" target=""><img
+                                            id="weather-icon5" src="https://openweathermap.org/img/wn/10d@2x.png"
+                                            alt="Five Day's away weather forecast, displayed for the searched city which includes: City, Date, Weather Icon, Temperature, Humidity, and Wind."></a>
+                                    <p id="temp5">Temperature: XX°C</p>
+                                    <p id="humid5">Humidity: XX%</p>
+                                    <p id="wind5">Wind: XX mph</p>
+                                </div>
+                            </figure>
+                        </article>
+                    </section>
+                </div>
             </div>
         </div>
     </div>

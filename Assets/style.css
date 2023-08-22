@@ -14,13 +14,11 @@ header {
     display: flex;
     flex-wrap: wrap;
     margin: 5px;
-    /* border: solid black; */
 }
 
 #search {
     flex: 0 0 25%;
     margin-right: 2%;
-    /* border: solid black; */
 }
 
 #search h2 {
@@ -38,35 +36,20 @@ header {
 
 #search-history {
     margin-top: 20px;
-    /* border: solid black; */
 }
 
 #results {
     height: 700px;
     flex: 0 0 73%;
-    /* border: solid black; */
 }
 
 #current-weather {
     padding: 10px;
     height: 200px;
     margin-top: 10px;
-    margin-right: 100px;
-    border: solid black 2px;
-
 }
 
 #future-weather {
     height: 320px;
     margin-top: 20px;
 }
-
-/* 
-#future-weather {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .icons {
-    margin-bottom: 10px;
-  } */
