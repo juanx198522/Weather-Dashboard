@@ -17,6 +17,7 @@ var defaultCity = "Miami";
 
 // Function to fetch and display data for the default city
 function displayDefaultCityWeather() {
+  
   getApi(defaultCity);
   fetchFiveDayForecast(defaultCity);
 }
@@ -26,15 +27,17 @@ window.onload = displayDefaultCityWeather;
 
 
 function getSearchHistory() {
-  searchHistory.innerHTML=""; 
-  for (let i = 0; i < listOfCities.length; i++) {
-    var historyItem = document.createElement("button");
-    historyItem.textContent = listOfCities[i];
-    historyItem.classList.add('btn', 'btn-secondary', 'historyBtn');
-    searchHistory.append(historyItem);
+  
+
+  if (listOfCities.length > 0) { // Check if the array is not empty
+    for (let i = 0; i < listOfCities.length; i++) {
+      var historyItem = document.createElement("button");
+      historyItem.textContent = listOfCities[i];
+      historyItem.classList.add('btn', 'btn-secondary', 'historyBtn');
+      searchHistory.append(historyItem);
+    }
   }
 }
-
 getSearchHistory();
 
 function getApi(city) {
@@ -60,7 +63,7 @@ function getApi(city) {
       
       console.log(listOfCities);
 
-      if (!listOfCities.includes(historyEl)){
+      if (!listOfCities.includes(historyEl) && historyEl !== ""){
         listOfCities.push(historyEl)
         localStorage.setItem("historyStorage", JSON.stringify(listOfCities));
         // var historyItem = document.createElement("button");
@@ -110,12 +113,13 @@ function fetchFiveDayForecast(city) {
         const formattedDate = `${month.padStart(2, '0')}/${day.padStart(2, '0')}/${year}`;
         
         // Set the formatted date in the element
+
         document.getElementById(`cityday${i + 1}`).textContent = formattedDate;
                 document.getElementById(`cityname${i + 1}`).textContent = forecast.name;
         document.getElementById(`weather-icon${i + 1}`).src = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`;
         document.getElementById(`temp${i + 1}`).textContent = `Temp: ${forecast.main.temp}°C`;
-        document.getElementById(`humid${i + 1}`).textContent = `Humidity: ${forecast.main.humidity}%`;
         document.getElementById(`wind${i + 1}`).textContent = `Wind: ${forecast.wind.speed} MPH`;
+        document.getElementById(`humid${i + 1}`).textContent = `Humidity: ${forecast.main.humidity}%`;
       }
     })
     .catch((error) => {
