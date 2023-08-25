@@ -1,42 +1,95 @@
 # Weather Dashboard
 
+## Table of Contents
+- [Description](#description)
+- [User Story](#user-story)
+- [Acceptance Criteria](#acceptance-criteria)
+- [API Information](#api-information)
+- [Usage](#usage)
+- [Deployed Application Link](#deployed-application-link)
+- [License](#license)
+- [Contributing](#contributing)
+- [Questions](#questions)
+
+---
+
 ## Description
 
-This is a weather dashboard application that provides users with current and future weather conditions for multiple cities. It utilizes a third-party API, specifically the OpenWeatherMap API, to retrieve weather data and displays it dynamically in the browser. Users can search for cities, view current weather conditions, and access a 5-day weather forecast.
+This Weather Dashboard is a web application that allows users to view the weather outlook for multiple cities. It provides current weather conditions as well as a 5-day forecast. The application dynamically updates the HTML and CSS to display weather information obtained from the [OpenWeatherMap API](https://openweathermap.org/). The weather data includes city name, date, weather condition icon, temperature, humidity, and wind speed.
+
+---
 
 ## User Story
 
-As a traveler, I want to see the weather outlook for multiple cities so that I can plan a trip accordingly.
+As a traveler, I want to see the weather outlook for multiple cities so that I can plan my trip accordingly.
+
+---
 
 ## Acceptance Criteria
 
-- Given a weather dashboard with form inputs
-- When I search for a city
-- Then I am presented with current and future conditions for that city, and that city is added to the search history
-- When I view current weather conditions for that city
-- Then I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the wind speed
-- When I view future weather conditions for that city
-- Then I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-- When I click on a city in the search history
-- Then I am again presented with current and future conditions for that city
+This Weather Dashboard fulfills the following acceptance criteria:
+
+1. When I search for a city, I am presented with current and future conditions for that city, and that city is added to the search history.
+
+2. When I view current weather conditions for a city, I am presented with:
+    - City name
+    - Date
+    - An icon representation of weather conditions
+    - Temperature
+    - Humidity
+    - Wind speed
+
+###
+
+3. When I view future weather conditions for a city, I am presented with a 5-day forecast that displays:
+    
+    - Date
+    - An icon representation of weather conditions
+    - Temperature
+    - Wind speed
+    - Humidity
+
+###
+
+4. When I click on a city in the search history, I am again presented with current and future conditions for that city.
+
+---
+
+## API Information
+
+This Weather Dashboard uses the [OpenWeatherMap API](https://openweathermap.org/). The base URL for retrieving weather data for cities is. 
+
+---
 
 ## Usage
 
-To use this weather dashboard, simply open it in a web browser and start searching for cities to get weather information. You can view current weather conditions and access a 5-day weather forecast for each city. Your search history will be saved using localStorage.
+To use the Weather Dashboard:
 
-## Technologies Used
+1. Enter the name of a city in the provided search form.
+2. Click the "Search" button.
+3. The current weather conditions and 5-day forecast for the city will be displayed.
+4. The city will be added to the search history.
+5. You can click on a city in the search history to view its weather information again.
 
-- HTML
-- CSS
-- JavaScript
-- [OpenWeatherMap API](https://openweathermap.org/api) for weather data
+---
 
-### Deployed Application Link
+## Deployed Application Link
 
-### Contributing
+![Weather Dashboard Mock-Up](mock-up.png)
+
+---
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
+
+## Contributing
 Contributions are welcome! If you find any issues or have suggestions for improvements, please submit an issue or a pull request.
 
-### Questions
+---
+
+## Questions
 If you have any questions, feel free to reach out to the project maintainers:
 
 - Maintainer Name: Juan Cruz Garcia

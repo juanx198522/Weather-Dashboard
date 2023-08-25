@@ -1,4 +1,7 @@
+// API key for OpenWeatherMap
 var apiKey = "8588518f199fbc50237600df408b946e";
+
+// Get references to HTML elements by their IDs
 var cityInput = document.getElementById("cityInput");
 var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&appid=8588518f199fbc50237600df408b946e";
 var cityName = document.getElementById("city-name");
@@ -9,6 +12,8 @@ var searchHistory = document.getElementById("search-history");
 var fetchButton = document.getElementById('fetch-button');
 var date = new Date();
 var formatDay = date.toLocaleDateString("en-US");
+
+// Retrieve the search history from local storage or initialize it as an empty array
 var listOfCities = JSON.parse(localStorage.getItem("historyStorage")) || [];
 var historyBtn = document.querySelector(".historyBtn")
 
@@ -17,7 +22,6 @@ var defaultCity = "Miami";
 
 // Function to fetch and display data for the default city
 function displayDefaultCityWeather() {
-  
   getApi(defaultCity);
   fetchFiveDayForecast(defaultCity);
 }
@@ -25,11 +29,11 @@ function displayDefaultCityWeather() {
 // Call the function when the page loads
 window.onload = displayDefaultCityWeather;
 
-
+// Function to display the search history buttons
 function getSearchHistory() {
-  
+  searchHistory.innerHTML = "";
 
-  if (listOfCities.length > 0) { // Check if the array is not empty
+  if (listOfCities.length > 0) {
     for (let i = 0; i < listOfCities.length; i++) {
       var historyItem = document.createElement("button");
       historyItem.textContent = listOfCities[i];
@@ -38,8 +42,10 @@ function getSearchHistory() {
     }
   }
 }
+// Call the function to display search history
 getSearchHistory();
 
+// Function to fetch weather data for a given city
 function getApi(city) {
   fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=8588518f199fbc50237600df408b946e")
     .then(function (response) {
@@ -47,7 +53,6 @@ function getApi(city) {
     })
     .then(function (data) {
       console.log(data);
-
       const iconElement = document.createElement('img');
       const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
       iconElement.src = iconUrl;
@@ -60,33 +65,26 @@ function getApi(city) {
       windActual.textContent = "Wind: " + formattedSpeed + " MPH";
       humidityActual.textContent = "Humidity: " + data.main.humidity + "%";
       var historyEl = cityInput.value;
-      
+
       console.log(listOfCities);
 
-      if (!listOfCities.includes(historyEl) && historyEl !== ""){
+      if (!listOfCities.includes(historyEl) && historyEl !== "") {
         listOfCities.push(historyEl)
         localStorage.setItem("historyStorage", JSON.stringify(listOfCities));
-        // var historyItem = document.createElement("button");
-        // historyItem.textContent = historyEl;
-        // historyItem.classList.add("historyBtn")
-        
-        // searchHistory.append(historyItem);
-
         getSearchHistory();
       }
-      
-
     });
 }
 
+// Event listener for clicking on search history buttons
 searchHistory.addEventListener('click', function (event) {
   console.log("inside the history click function")
   if (event.target.classList.contains('historyBtn')) {
     console.log("inside if")
     var nameCity = event.target.textContent;
     console.log("nameCity: ", nameCity)
-     getApi(nameCity);
-     fetchFiveDayForecast(nameCity);  
+    getApi(nameCity);
+    fetchFiveDayForecast(nameCity);
   }
 });
 
@@ -103,19 +101,19 @@ function fetchFiveDayForecast(city) {
         // Update HTML elements with forecast data
         const rawDate = forecast.dt_txt;
         const dateParts = rawDate.split(" ")[0].split("-"); // Split date part
-        
+
         // Parse year, month, and day
         const year = dateParts[0];
         const month = dateParts[1];
         const day = dateParts[2];
-        
+
         // Create a formatted date string
         const formattedDate = `${month.padStart(2, '0')}/${day.padStart(2, '0')}/${year}`;
-        
+
         // Set the formatted date in the element
 
         document.getElementById(`cityday${i + 1}`).textContent = formattedDate;
-                document.getElementById(`cityname${i + 1}`).textContent = forecast.name;
+        document.getElementById(`cityname${i + 1}`).textContent = forecast.name;
         document.getElementById(`weather-icon${i + 1}`).src = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`;
         document.getElementById(`temp${i + 1}`).textContent = `Temp: ${forecast.main.temp}°C`;
         document.getElementById(`wind${i + 1}`).textContent = `Wind: ${forecast.wind.speed} MPH`;
